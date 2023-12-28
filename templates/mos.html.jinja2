@@ -10,11 +10,11 @@
         Trong thí nghiệm này, chúng tôi sử dụng máy tính để tổng hợp giọng nói của con người.
         Tệp âm thanh sau đây chứa các bản ghi âm thực và giọng nói tổng hợp, đồng thời mỗi câu đều có kèm theo bản ghi.
         Yêu cầu các đối tượng nghe bằng tai nghe và đưa ra các đánh giá sau dựa trên chất lượng của từng tệp âm thanh:        <ul>
-            <li>1 (rất tệ)</li>
-            <li>2 (không tốt)</li>
-            <li>3 (bình thường)</li>
-            <li>4 (tốt)</li>
-            <li>5 (rất tốt)</li>
+            <li>1 (rất tệ, không nghe hiểu được)</li>
+            <li>2 (tệ, chỉ nghe hiểu một số từ)</li>
+            <li>3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</li>
+            <li>4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</li>
+            <li>5 (rất tốt, giống như người thật nói)</li>
         </ul>
     </p>
 {% endblock %}
@@ -30,23 +30,23 @@
                 </p>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="{{ question.name }}" id="{{ question.name }}_1" value="5" required>
-                    <label class="form-check-label" for="{{ question.name }}_1">5 (rất tốt)</label>
+                    <label class="form-check-label" for="{{ question.name }}_1">5 (rất tốt, giống như người thật nói)</label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="{{ question.name }}" id="{{ question.name }}_2" value="4" required>
-                    <label class="form-check-label" for="{{ question.name }}_2">4 (tốt)</label>
+                    <label class="form-check-label" for="{{ question.name }}_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="{{ question.name }}" id="{{ question.name }}_3" value="3" required>
-                    <label class="form-check-label" for="{{ question.name }}_3">3 (bình thường)</label>
+                    <label class="form-check-label" for="{{ question.name }}_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="{{ question.name }}" id="{{ question.name }}_4" value="2" required>
-                    <label class="form-check-label" for="{{ question.name }}_4">2 (không tốt)</label>
+                    <label class="form-check-label" for="{{ question.name }}_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="{{ question.name }}" id="{{ question.name }}_5" value="1" required>
-                    <label class="form-check-label" for="{{ question.name }}_5">1 (rất tệ)</label>
+                    <label class="form-check-label" for="{{ question.name }}_5">1 (rất tệ, không nghe hiểu được)</label>
                 </div>
             </div>
         </div>
