@@ -1,15 +1,15 @@
+**lw_texts:
+0|Microsoft Teams, một nền tảng dành cho doanh nghiệp được Microsoft ra mắt cũng khá lâu. Vậy Microsoft Teams là gì? Có thể làm được những gì? Ai có thể sử dụng?
+1|Vi-bi Smart Dialog Platform giúp các doanh nghiệp dễ dàng xây dựng các virtual agents. Chúng tôi tập trung vào những nghiên cứu đột phá về Text To Speech, Speech To Text, Natural Language Understanding cho tiếng Việt.
+2|Thị trưởng Kiev Vitali Klitschko cho biết, các hệ thống phòng không tham gia đẩy lùi cuộc tấn công của Nga.
+3|Cam chứa lượng lớn vitamin C và beta-carotene, giúp giữ cho da khỏe mạnh và đều màu, Nó cũng giúp tăng cường sản xuất collagen và làm mờ các nếp nhăn.
+4|Trải nghiệm sự quyến rũ của khuôn viên xinh đẹp thuộc trường đại học thị trấn ở Brunswick, Maine, nơi Longfellow, Hawthorne và Harriet Beecher Stowe đã từng theo học. Bowdoin College là một trường nghệ thuật nhỏ với khuôn viên ấn tượng.
 **en_texts:
 0|Artificial Intelligence is revolutionizing various industries with its ability to mimic human intelligence and automate complex tasks.
 1|Climate change poses a significant threat to the planet, impacting weather patterns, ecosystems, and global temperatures.
 2|Blockchain technology, known for its decentralized and secure nature, is disrupting industries like finance, supply chain, and even governance.
 3|Increasing awareness about mental health is crucial for addressing the stigma and providing support and resources for those dealing with mental health challenges.
 4|The future of work is evolving with remote work, automation, and artificial intelligence shaping the way businesses operate and employees collaborate.
-**lw_texts:
-0|Microsoft Teams, một nền tảng dành cho doanh nghiệp được Microsoft ra mắt cũng khá lâu. Vậy Microsoft Teams là gì? Có thể làm được những gì? Ai có thể sử dụng?
-1|Vi-bi Smart Dialog Platform giúp các doanh nghiệp dễ dàng xây dựng các virtual agents. Chúng tôi tập trung vào những nghiên cứu đột phá về Text To Speech, Speech To Text, Natural Language Understanding cho tiếng Việt.
-2|Thị trưởng Kiev Vitali Klitschko cho biết, các hệ thống phòng không tham gia đẩy lùi cuộc tấn công của Nga.
-3|Cam chứa lượng lớn vitamin C và beta-carotene, giúp giữ cho da khỏe mạnh và đều màu. Nó cũng giúp tăng cường sản xuất collagen và làm mờ các nếp nhăn.
-4|Trải nghiệm sự quyến rũ của khuôn viên xinh đẹp thuộc trường đại học thị trấn ở Brunswick, Maine, nơi Longfellow, Hawthorne và Harriet Beecher Stowe đã từng theo học. Bowdoin College là một trường nghệ thuật nhỏ với khuôn viên ấn tượng.
 **vi_texts:
 0|Năng lượng tái tạo đang nổi lên như một nguồn đáng kể, trong nỗ lực giảm thiểu tác động tiêu cực của ngành công nghiệp năng lượng truyền thống.
 1|Trong thời đại số, bảo vệ và thúc đẩy nhân quyền trở thành một thách thức quan trọng, đặt ra nhiều câu hỏi về quyền riêng tư và tự do trực tuyến.
