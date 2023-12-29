@@ -12,7 +12,7 @@ def main():
     langs = {"vi": 0, "en": 1, "lw": 2}
     html = template.render(
         page_title="MOS test",
-        form_url="https://script.google.com/macros/s/AKfycbz79ugrzOJXZ7ovv28gSEEFKxCw35nyzJJVxts889MRYDyxrurbIQkrEsj8ZKLqKzH1Ag/exec",
+        form_url="https://script.google.com/macros/s/AKfycbynCNb84_gdH2by0-e6fW8dtu7rVMN701kSie5W0VkyJ0o3nOWN5jKX_YMc-7EOca47-g/exec",
         form_id=1,
         questions=[
             {
