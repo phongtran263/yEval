@@ -5,7 +5,6 @@ from jinja2 import FileSystemLoader, Environment
 
 
 def main():
-    """Main function."""
     loader = FileSystemLoader(searchpath="./templates")
     env = Environment(loader=loader)
     template = env.get_template("mos.html.jinja2")

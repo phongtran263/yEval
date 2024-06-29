@@ -7,1444 +7,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
         integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+    <style>
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }    
+        .container.con1 {
+            margin-top: -30px;
+            margin-bottom: -30px;
+        }
+    </style>
 </head>
 
 <body>
     <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            
-    <h1 class="display-4">MOS test</h1>
-    <p class="lead">Đánh giá chất lượng giọng nói tổng hợp</p>
-    <hr class="my-4">
-    <p>
-        Cảm ơn bạn đã tham gia thí nghiệm này!
-    </p>
-    <p>
-        Trong thí nghiệm này, chúng tôi sử dụng máy tính để tổng hợp giọng nói của con người.
-        Tệp âm thanh sau đây chứa các bản ghi âm thực và giọng nói tổng hợp, đồng thời mỗi câu đều có kèm theo bản ghi.
-        Yêu cầu các đối tượng nghe bằng tai nghe và đưa ra các đánh giá sau dựa trên chất lượng của từng tệp âm thanh:        <ul>
-            <li>1 (rất tệ, không nghe hiểu được)</li>
-            <li>2 (tệ, chỉ nghe hiểu một số từ)</li>
-            <li>3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</li>
-            <li>4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</li>
-            <li>5 (rất tốt, giống như người thật nói)</li>
-        </ul>
-    </p>
-
+        <div class="container con1">  
+            <h1 class="display-5">MOS test</h1>
+            <p class="lead">Đánh giá chất lượng giọng nói tổng hợp</p>
+            <hr class="my-1">
+            <p>
+                Cảm ơn bạn đã tham gia thí nghiệm này!
+            </p>
+            <p>
+                Trong thí nghiệm này, mình sử dụng mô hình học sâu để tổng hợp giọng nói của con người.
+                Tệp âm thanh sau đây chứa các bản ghi âm thực và giọng nói tổng hợp, đồng thời mỗi câu đều có kèm theo bản ghi. 
+                Câu có thể chứa <b>tiếng Việt</b> và <b>tiếng Anh</b>.
+                Người tham gia nên nghe bằng tai nghe và đưa ra các đánh giá dựa trên chất lượng của từng tệp âm thanh với cả <b>tiếng Việt</b> và <b>tiếng Anh</b> trong câu.
+            </p>
         </div>
     </div>
 
     <div class="container" id="form_container">
-        <form id="theForm" action="https://script.google.com/macros/s/AKfycbxMN-aoHQGyYJTg8HU1T64UC4wG-UWmvTI-8xdI2ekVGNqj8Hbam0XyFT5XlAfYF5qw_A/exec" method="GET" onsubmit="return preventRepeatedSubmission();">
-            <div class="form-group">
-                <label for="name">Tên:</label>
-                <input class="form-control" type="text" inputmode="text" name="name" required>
-            </div>
-            <div class="form-group">
-                <label for="mail">e-mail:</label>
-                <input class="form-control" type="text" inputmode="email" placeholder="account@example.com" name="mail">
-            </div>
-            
-    
-        <div class="card form-group">
-            <div class="card-header">1</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp1/vi/0.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q1" id="q1_1" value="5" required>
-                    <label class="form-check-label" for="q1_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q1" id="q1_2" value="4" required>
-                    <label class="form-check-label" for="q1_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q1" id="q1_3" value="3" required>
-                    <label class="form-check-label" for="q1_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q1" id="q1_4" value="2" required>
-                    <label class="form-check-label" for="q1_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q1" id="q1_5" value="1" required>
-                    <label class="form-check-label" for="q1_5">1 (rất tệ, không nghe hiểu được)</label>
+        <form id="theForm" action="https://script.google.com/macros/s/AKfycbzXaiuf9nMEvrfhLnNDOzvw1GV5g_HDohxS2UqG7ZQpJl4Y8fGrJScwH1e3FdP00fzj/exec" method="GET" onsubmit="return preventRepeatedSubmission();">    
+            <div class="card form-group">
+                <div id="audioID" class="card-header">1</div>
+                <div class="card-body">
+                    <p>
+                        <audio id="audioPlayer" controls src="">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </p>
+                    <input id="results" type="text" value="" name="results" hidden>
+                    <div id="script" style="font-weight: bold;"></div><br>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q1" id="q1_1" value="5" required>
+                        <label class="form-check-label" for="q1_1">5 (rất tốt, giống như người thật nói)</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q1" id="q1_2" value="4" required>
+                        <label class="form-check-label" for="q1_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q1" id="q1_3" value="3" required>
+                        <label class="form-check-label" for="q1_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q1" id="q1_4" value="2" required>
+                        <label class="form-check-label" for="q1_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q1" id="q1_5" value="1" required>
+                        <label class="form-check-label" for="q1_5">1 (rất tệ, không nghe hiểu được)</label>
+                    </div>
                 </div>
             </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">2</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp1/vi/1.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q2" id="q2_1" value="5" required>
-                    <label class="form-check-label" for="q2_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q2" id="q2_2" value="4" required>
-                    <label class="form-check-label" for="q2_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q2" id="q2_3" value="3" required>
-                    <label class="form-check-label" for="q2_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q2" id="q2_4" value="2" required>
-                    <label class="form-check-label" for="q2_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q2" id="q2_5" value="1" required>
-                    <label class="form-check-label" for="q2_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">3</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp1/vi/2.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q3" id="q3_1" value="5" required>
-                    <label class="form-check-label" for="q3_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q3" id="q3_2" value="4" required>
-                    <label class="form-check-label" for="q3_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q3" id="q3_3" value="3" required>
-                    <label class="form-check-label" for="q3_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q3" id="q3_4" value="2" required>
-                    <label class="form-check-label" for="q3_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q3" id="q3_5" value="1" required>
-                    <label class="form-check-label" for="q3_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">4</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp1/vi/3.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q4" id="q4_1" value="5" required>
-                    <label class="form-check-label" for="q4_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q4" id="q4_2" value="4" required>
-                    <label class="form-check-label" for="q4_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q4" id="q4_3" value="3" required>
-                    <label class="form-check-label" for="q4_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q4" id="q4_4" value="2" required>
-                    <label class="form-check-label" for="q4_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q4" id="q4_5" value="1" required>
-                    <label class="form-check-label" for="q4_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">5</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp1/vi/4.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q5" id="q5_1" value="5" required>
-                    <label class="form-check-label" for="q5_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q5" id="q5_2" value="4" required>
-                    <label class="form-check-label" for="q5_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q5" id="q5_3" value="3" required>
-                    <label class="form-check-label" for="q5_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q5" id="q5_4" value="2" required>
-                    <label class="form-check-label" for="q5_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q5" id="q5_5" value="1" required>
-                    <label class="form-check-label" for="q5_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">6</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp1/en/0.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q6" id="q6_1" value="5" required>
-                    <label class="form-check-label" for="q6_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q6" id="q6_2" value="4" required>
-                    <label class="form-check-label" for="q6_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q6" id="q6_3" value="3" required>
-                    <label class="form-check-label" for="q6_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q6" id="q6_4" value="2" required>
-                    <label class="form-check-label" for="q6_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q6" id="q6_5" value="1" required>
-                    <label class="form-check-label" for="q6_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">7</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp1/en/1.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q7" id="q7_1" value="5" required>
-                    <label class="form-check-label" for="q7_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q7" id="q7_2" value="4" required>
-                    <label class="form-check-label" for="q7_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q7" id="q7_3" value="3" required>
-                    <label class="form-check-label" for="q7_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q7" id="q7_4" value="2" required>
-                    <label class="form-check-label" for="q7_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q7" id="q7_5" value="1" required>
-                    <label class="form-check-label" for="q7_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">8</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp1/en/2.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q8" id="q8_1" value="5" required>
-                    <label class="form-check-label" for="q8_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q8" id="q8_2" value="4" required>
-                    <label class="form-check-label" for="q8_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q8" id="q8_3" value="3" required>
-                    <label class="form-check-label" for="q8_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q8" id="q8_4" value="2" required>
-                    <label class="form-check-label" for="q8_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q8" id="q8_5" value="1" required>
-                    <label class="form-check-label" for="q8_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">9</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp1/en/3.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q9" id="q9_1" value="5" required>
-                    <label class="form-check-label" for="q9_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q9" id="q9_2" value="4" required>
-                    <label class="form-check-label" for="q9_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q9" id="q9_3" value="3" required>
-                    <label class="form-check-label" for="q9_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q9" id="q9_4" value="2" required>
-                    <label class="form-check-label" for="q9_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q9" id="q9_5" value="1" required>
-                    <label class="form-check-label" for="q9_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">10</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp1/en/4.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q10" id="q10_1" value="5" required>
-                    <label class="form-check-label" for="q10_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q10" id="q10_2" value="4" required>
-                    <label class="form-check-label" for="q10_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q10" id="q10_3" value="3" required>
-                    <label class="form-check-label" for="q10_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q10" id="q10_4" value="2" required>
-                    <label class="form-check-label" for="q10_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q10" id="q10_5" value="1" required>
-                    <label class="form-check-label" for="q10_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">11</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp1/lw/0.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q11" id="q11_1" value="5" required>
-                    <label class="form-check-label" for="q11_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q11" id="q11_2" value="4" required>
-                    <label class="form-check-label" for="q11_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q11" id="q11_3" value="3" required>
-                    <label class="form-check-label" for="q11_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q11" id="q11_4" value="2" required>
-                    <label class="form-check-label" for="q11_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q11" id="q11_5" value="1" required>
-                    <label class="form-check-label" for="q11_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">12</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp1/lw/1.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q12" id="q12_1" value="5" required>
-                    <label class="form-check-label" for="q12_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q12" id="q12_2" value="4" required>
-                    <label class="form-check-label" for="q12_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q12" id="q12_3" value="3" required>
-                    <label class="form-check-label" for="q12_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q12" id="q12_4" value="2" required>
-                    <label class="form-check-label" for="q12_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q12" id="q12_5" value="1" required>
-                    <label class="form-check-label" for="q12_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">13</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp1/lw/2.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q13" id="q13_1" value="5" required>
-                    <label class="form-check-label" for="q13_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q13" id="q13_2" value="4" required>
-                    <label class="form-check-label" for="q13_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q13" id="q13_3" value="3" required>
-                    <label class="form-check-label" for="q13_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q13" id="q13_4" value="2" required>
-                    <label class="form-check-label" for="q13_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q13" id="q13_5" value="1" required>
-                    <label class="form-check-label" for="q13_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">14</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp1/lw/3.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q14" id="q14_1" value="5" required>
-                    <label class="form-check-label" for="q14_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q14" id="q14_2" value="4" required>
-                    <label class="form-check-label" for="q14_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q14" id="q14_3" value="3" required>
-                    <label class="form-check-label" for="q14_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q14" id="q14_4" value="2" required>
-                    <label class="form-check-label" for="q14_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q14" id="q14_5" value="1" required>
-                    <label class="form-check-label" for="q14_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">15</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp1/lw/4.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q15" id="q15_1" value="5" required>
-                    <label class="form-check-label" for="q15_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q15" id="q15_2" value="4" required>
-                    <label class="form-check-label" for="q15_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q15" id="q15_3" value="3" required>
-                    <label class="form-check-label" for="q15_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q15" id="q15_4" value="2" required>
-                    <label class="form-check-label" for="q15_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q15" id="q15_5" value="1" required>
-                    <label class="form-check-label" for="q15_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">16</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp2/vi/0.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q16" id="q16_1" value="5" required>
-                    <label class="form-check-label" for="q16_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q16" id="q16_2" value="4" required>
-                    <label class="form-check-label" for="q16_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q16" id="q16_3" value="3" required>
-                    <label class="form-check-label" for="q16_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q16" id="q16_4" value="2" required>
-                    <label class="form-check-label" for="q16_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q16" id="q16_5" value="1" required>
-                    <label class="form-check-label" for="q16_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">17</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp2/vi/1.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q17" id="q17_1" value="5" required>
-                    <label class="form-check-label" for="q17_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q17" id="q17_2" value="4" required>
-                    <label class="form-check-label" for="q17_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q17" id="q17_3" value="3" required>
-                    <label class="form-check-label" for="q17_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q17" id="q17_4" value="2" required>
-                    <label class="form-check-label" for="q17_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q17" id="q17_5" value="1" required>
-                    <label class="form-check-label" for="q17_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">18</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp2/vi/2.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q18" id="q18_1" value="5" required>
-                    <label class="form-check-label" for="q18_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q18" id="q18_2" value="4" required>
-                    <label class="form-check-label" for="q18_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q18" id="q18_3" value="3" required>
-                    <label class="form-check-label" for="q18_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q18" id="q18_4" value="2" required>
-                    <label class="form-check-label" for="q18_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q18" id="q18_5" value="1" required>
-                    <label class="form-check-label" for="q18_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">19</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp2/vi/3.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q19" id="q19_1" value="5" required>
-                    <label class="form-check-label" for="q19_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q19" id="q19_2" value="4" required>
-                    <label class="form-check-label" for="q19_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q19" id="q19_3" value="3" required>
-                    <label class="form-check-label" for="q19_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q19" id="q19_4" value="2" required>
-                    <label class="form-check-label" for="q19_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q19" id="q19_5" value="1" required>
-                    <label class="form-check-label" for="q19_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">20</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp2/vi/4.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q20" id="q20_1" value="5" required>
-                    <label class="form-check-label" for="q20_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q20" id="q20_2" value="4" required>
-                    <label class="form-check-label" for="q20_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q20" id="q20_3" value="3" required>
-                    <label class="form-check-label" for="q20_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q20" id="q20_4" value="2" required>
-                    <label class="form-check-label" for="q20_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q20" id="q20_5" value="1" required>
-                    <label class="form-check-label" for="q20_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">21</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp2/en/0.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q21" id="q21_1" value="5" required>
-                    <label class="form-check-label" for="q21_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q21" id="q21_2" value="4" required>
-                    <label class="form-check-label" for="q21_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q21" id="q21_3" value="3" required>
-                    <label class="form-check-label" for="q21_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q21" id="q21_4" value="2" required>
-                    <label class="form-check-label" for="q21_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q21" id="q21_5" value="1" required>
-                    <label class="form-check-label" for="q21_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">22</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp2/en/1.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q22" id="q22_1" value="5" required>
-                    <label class="form-check-label" for="q22_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q22" id="q22_2" value="4" required>
-                    <label class="form-check-label" for="q22_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q22" id="q22_3" value="3" required>
-                    <label class="form-check-label" for="q22_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q22" id="q22_4" value="2" required>
-                    <label class="form-check-label" for="q22_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q22" id="q22_5" value="1" required>
-                    <label class="form-check-label" for="q22_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">23</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp2/en/2.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q23" id="q23_1" value="5" required>
-                    <label class="form-check-label" for="q23_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q23" id="q23_2" value="4" required>
-                    <label class="form-check-label" for="q23_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q23" id="q23_3" value="3" required>
-                    <label class="form-check-label" for="q23_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q23" id="q23_4" value="2" required>
-                    <label class="form-check-label" for="q23_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q23" id="q23_5" value="1" required>
-                    <label class="form-check-label" for="q23_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">24</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp2/en/3.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q24" id="q24_1" value="5" required>
-                    <label class="form-check-label" for="q24_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q24" id="q24_2" value="4" required>
-                    <label class="form-check-label" for="q24_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q24" id="q24_3" value="3" required>
-                    <label class="form-check-label" for="q24_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q24" id="q24_4" value="2" required>
-                    <label class="form-check-label" for="q24_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q24" id="q24_5" value="1" required>
-                    <label class="form-check-label" for="q24_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">25</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp2/en/4.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q25" id="q25_1" value="5" required>
-                    <label class="form-check-label" for="q25_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q25" id="q25_2" value="4" required>
-                    <label class="form-check-label" for="q25_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q25" id="q25_3" value="3" required>
-                    <label class="form-check-label" for="q25_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q25" id="q25_4" value="2" required>
-                    <label class="form-check-label" for="q25_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q25" id="q25_5" value="1" required>
-                    <label class="form-check-label" for="q25_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">26</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp2/lw/0.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q26" id="q26_1" value="5" required>
-                    <label class="form-check-label" for="q26_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q26" id="q26_2" value="4" required>
-                    <label class="form-check-label" for="q26_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q26" id="q26_3" value="3" required>
-                    <label class="form-check-label" for="q26_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q26" id="q26_4" value="2" required>
-                    <label class="form-check-label" for="q26_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q26" id="q26_5" value="1" required>
-                    <label class="form-check-label" for="q26_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">27</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp2/lw/1.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q27" id="q27_1" value="5" required>
-                    <label class="form-check-label" for="q27_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q27" id="q27_2" value="4" required>
-                    <label class="form-check-label" for="q27_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q27" id="q27_3" value="3" required>
-                    <label class="form-check-label" for="q27_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q27" id="q27_4" value="2" required>
-                    <label class="form-check-label" for="q27_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q27" id="q27_5" value="1" required>
-                    <label class="form-check-label" for="q27_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">28</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp2/lw/2.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q28" id="q28_1" value="5" required>
-                    <label class="form-check-label" for="q28_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q28" id="q28_2" value="4" required>
-                    <label class="form-check-label" for="q28_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q28" id="q28_3" value="3" required>
-                    <label class="form-check-label" for="q28_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q28" id="q28_4" value="2" required>
-                    <label class="form-check-label" for="q28_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q28" id="q28_5" value="1" required>
-                    <label class="form-check-label" for="q28_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">29</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp2/lw/3.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q29" id="q29_1" value="5" required>
-                    <label class="form-check-label" for="q29_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q29" id="q29_2" value="4" required>
-                    <label class="form-check-label" for="q29_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q29" id="q29_3" value="3" required>
-                    <label class="form-check-label" for="q29_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q29" id="q29_4" value="2" required>
-                    <label class="form-check-label" for="q29_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q29" id="q29_5" value="1" required>
-                    <label class="form-check-label" for="q29_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">30</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp2/lw/4.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q30" id="q30_1" value="5" required>
-                    <label class="form-check-label" for="q30_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q30" id="q30_2" value="4" required>
-                    <label class="form-check-label" for="q30_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q30" id="q30_3" value="3" required>
-                    <label class="form-check-label" for="q30_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q30" id="q30_4" value="2" required>
-                    <label class="form-check-label" for="q30_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q30" id="q30_5" value="1" required>
-                    <label class="form-check-label" for="q30_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">31</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp3/vi/0.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q31" id="q31_1" value="5" required>
-                    <label class="form-check-label" for="q31_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q31" id="q31_2" value="4" required>
-                    <label class="form-check-label" for="q31_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q31" id="q31_3" value="3" required>
-                    <label class="form-check-label" for="q31_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q31" id="q31_4" value="2" required>
-                    <label class="form-check-label" for="q31_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q31" id="q31_5" value="1" required>
-                    <label class="form-check-label" for="q31_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">32</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp3/vi/1.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q32" id="q32_1" value="5" required>
-                    <label class="form-check-label" for="q32_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q32" id="q32_2" value="4" required>
-                    <label class="form-check-label" for="q32_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q32" id="q32_3" value="3" required>
-                    <label class="form-check-label" for="q32_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q32" id="q32_4" value="2" required>
-                    <label class="form-check-label" for="q32_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q32" id="q32_5" value="1" required>
-                    <label class="form-check-label" for="q32_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">33</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp3/vi/2.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q33" id="q33_1" value="5" required>
-                    <label class="form-check-label" for="q33_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q33" id="q33_2" value="4" required>
-                    <label class="form-check-label" for="q33_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q33" id="q33_3" value="3" required>
-                    <label class="form-check-label" for="q33_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q33" id="q33_4" value="2" required>
-                    <label class="form-check-label" for="q33_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q33" id="q33_5" value="1" required>
-                    <label class="form-check-label" for="q33_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">34</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp3/vi/3.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q34" id="q34_1" value="5" required>
-                    <label class="form-check-label" for="q34_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q34" id="q34_2" value="4" required>
-                    <label class="form-check-label" for="q34_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q34" id="q34_3" value="3" required>
-                    <label class="form-check-label" for="q34_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q34" id="q34_4" value="2" required>
-                    <label class="form-check-label" for="q34_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q34" id="q34_5" value="1" required>
-                    <label class="form-check-label" for="q34_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">35</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp3/vi/4.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q35" id="q35_1" value="5" required>
-                    <label class="form-check-label" for="q35_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q35" id="q35_2" value="4" required>
-                    <label class="form-check-label" for="q35_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q35" id="q35_3" value="3" required>
-                    <label class="form-check-label" for="q35_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q35" id="q35_4" value="2" required>
-                    <label class="form-check-label" for="q35_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q35" id="q35_5" value="1" required>
-                    <label class="form-check-label" for="q35_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">36</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp3/en/0.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q36" id="q36_1" value="5" required>
-                    <label class="form-check-label" for="q36_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q36" id="q36_2" value="4" required>
-                    <label class="form-check-label" for="q36_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q36" id="q36_3" value="3" required>
-                    <label class="form-check-label" for="q36_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q36" id="q36_4" value="2" required>
-                    <label class="form-check-label" for="q36_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q36" id="q36_5" value="1" required>
-                    <label class="form-check-label" for="q36_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">37</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp3/en/1.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q37" id="q37_1" value="5" required>
-                    <label class="form-check-label" for="q37_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q37" id="q37_2" value="4" required>
-                    <label class="form-check-label" for="q37_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q37" id="q37_3" value="3" required>
-                    <label class="form-check-label" for="q37_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q37" id="q37_4" value="2" required>
-                    <label class="form-check-label" for="q37_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q37" id="q37_5" value="1" required>
-                    <label class="form-check-label" for="q37_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">38</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp3/en/2.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q38" id="q38_1" value="5" required>
-                    <label class="form-check-label" for="q38_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q38" id="q38_2" value="4" required>
-                    <label class="form-check-label" for="q38_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q38" id="q38_3" value="3" required>
-                    <label class="form-check-label" for="q38_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q38" id="q38_4" value="2" required>
-                    <label class="form-check-label" for="q38_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q38" id="q38_5" value="1" required>
-                    <label class="form-check-label" for="q38_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">39</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp3/en/3.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q39" id="q39_1" value="5" required>
-                    <label class="form-check-label" for="q39_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q39" id="q39_2" value="4" required>
-                    <label class="form-check-label" for="q39_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q39" id="q39_3" value="3" required>
-                    <label class="form-check-label" for="q39_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q39" id="q39_4" value="2" required>
-                    <label class="form-check-label" for="q39_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q39" id="q39_5" value="1" required>
-                    <label class="form-check-label" for="q39_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">40</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp3/en/4.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q40" id="q40_1" value="5" required>
-                    <label class="form-check-label" for="q40_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q40" id="q40_2" value="4" required>
-                    <label class="form-check-label" for="q40_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q40" id="q40_3" value="3" required>
-                    <label class="form-check-label" for="q40_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q40" id="q40_4" value="2" required>
-                    <label class="form-check-label" for="q40_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q40" id="q40_5" value="1" required>
-                    <label class="form-check-label" for="q40_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">41</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp3/lw/0.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q41" id="q41_1" value="5" required>
-                    <label class="form-check-label" for="q41_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q41" id="q41_2" value="4" required>
-                    <label class="form-check-label" for="q41_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q41" id="q41_3" value="3" required>
-                    <label class="form-check-label" for="q41_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q41" id="q41_4" value="2" required>
-                    <label class="form-check-label" for="q41_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q41" id="q41_5" value="1" required>
-                    <label class="form-check-label" for="q41_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">42</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp3/lw/1.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q42" id="q42_1" value="5" required>
-                    <label class="form-check-label" for="q42_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q42" id="q42_2" value="4" required>
-                    <label class="form-check-label" for="q42_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q42" id="q42_3" value="3" required>
-                    <label class="form-check-label" for="q42_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q42" id="q42_4" value="2" required>
-                    <label class="form-check-label" for="q42_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q42" id="q42_5" value="1" required>
-                    <label class="form-check-label" for="q42_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">43</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp3/lw/2.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q43" id="q43_1" value="5" required>
-                    <label class="form-check-label" for="q43_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q43" id="q43_2" value="4" required>
-                    <label class="form-check-label" for="q43_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q43" id="q43_3" value="3" required>
-                    <label class="form-check-label" for="q43_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q43" id="q43_4" value="2" required>
-                    <label class="form-check-label" for="q43_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q43" id="q43_5" value="1" required>
-                    <label class="form-check-label" for="q43_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">44</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp3/lw/3.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q44" id="q44_1" value="5" required>
-                    <label class="form-check-label" for="q44_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q44" id="q44_2" value="4" required>
-                    <label class="form-check-label" for="q44_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q44" id="q44_3" value="3" required>
-                    <label class="form-check-label" for="q44_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q44" id="q44_4" value="2" required>
-                    <label class="form-check-label" for="q44_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q44" id="q44_5" value="1" required>
-                    <label class="form-check-label" for="q44_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card form-group">
-            <div class="card-header">45</div>
-            <div class="card-body">
-                <p>
-                    <audio controls src="wavs/exp3/lw/4.wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q45" id="q45_1" value="5" required>
-                    <label class="form-check-label" for="q45_1">5 (rất tốt, giống như người thật nói)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q45" id="q45_2" value="4" required>
-                    <label class="form-check-label" for="q45_2">4 (tốt, nghe rõ ràng tuy nhiên chưa được tự nhiên)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q45" id="q45_3" value="3" required>
-                    <label class="form-check-label" for="q45_3">3 (bình thường, không nghe rõ nhưng vẫn hiểu nội dung)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q45" id="q45_4" value="2" required>
-                    <label class="form-check-label" for="q45_4">2 (tệ, chỉ nghe hiểu một số từ)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q45" id="q45_5" value="1" required>
-                    <label class="form-check-label" for="q45_5">1 (rất tệ, không nghe hiểu được)</label>
-                </div>
-            </div>
-        </div>
-    
 
-            <input type="text" name="formid" value="1" hidden>
-            <input type="text" name="thank" value="Cảm ơn bạn một lần nữa vì đã tham gia thí nghiệm này!" hidden>
-            <input class="btn btn-info btn-lg" type="submit" value="Gửi kết quả" id="submitBtn">
+            <div class="navigation">
+                <button id="previousBtn" onclick="previousAudio()" type="button">Previous</button>
+                <input class="btn btn-info btn-lg" type="submit" value="Gửi kết quả" id="submitBtn">
+                <button id="nextBtn" onclick="nextAudio()" type="button">Next</button>
+            </div>    
         </form>
     </div>
 
@@ -1454,6 +108,127 @@
             setTimeout("submitBtn.disabled=false;", 5000);
             return true;
         };
+
+        let audios = [];
+        let currentAudioIndex = 0;
+        const audioPlayer = document.getElementById('audioPlayer');
+        const audioID = document.getElementById('audioID');
+        const nextBtn = document.getElementById('nextBtn');
+        const submitBtn = document.getElementById('submitBtn')
+        const previousBtn = document.getElementById('previousBtn');
+        const expMap = {'gt':0,'provi':1,'procs':2,'datvi':3,'datcs':4,'strvi':5,'strcs':6}
+        const mosScores = {};
+        const results = document.getElementById("results");
+        const script = document.getElementById("script");
+        submitBtn.disabled = true;
+        const exps = ['datcs', 'datvi', 'gt', 'procs' ,'provi' ,'strcs' ,'strvi']
+
+        async function fetchAudioData() { 
+            try {
+                for (let exp of exps) {
+                    const path = 'wavs/' + exp + '/'
+                    const response = await fetch(path + 'text.txt');
+                    const data = await response.text();
+                    const lines = data.split('\n').sort(() => Math.random() - 0.5).slice(0,4);
+                    audio = lines.map((line, index) => {
+                        const [audioID, script] = line.trim().split('|')
+                        return {
+                            src: path + audioID + '.wav', // Assuming each line contains a URL to an audio file
+                            script: script, // Placeholder script text
+                            experimentID: expMap[exp],
+                            audioID: parseInt(audioID.split('.')[0])
+                        };
+                    });
+                    audios = audios.concat(audio)
+                }
+                audios = audios.sort(() => Math.random() - 0.5)
+                loadAudio(currentAudioIndex); // Load initial audio
+            } catch (error) {
+                console.error('Error fetching audio data:', error);
+            }
+        }
+
+        function loadAudio(index) {
+            if (index >= 0 && index < audios.length) {
+                audioPlayer.src = audios[index].src;
+                audioPlayer.load();
+                audioID.textContent = `Audio ${index + 1}/${audios.length}`;
+                script.textContent = audios[index].script;
+                const radios = document.getElementsByClassName('form-check-input');
+                for (var i = 0; i < radios.length; i++) {
+                    if (mosScores[index] !== undefined && parseInt(mosScores[index].split(' ')[2]) == radios[i].value){
+                        radios[i].checked = true;
+                    }
+                    else {
+                        radios[i].checked = false;
+                    }
+                }
+                nextBtn.disabled = true;
+            }
+            updateNavigationButtons(index);
+        }
+
+        function nextAudio() {
+            if (currentAudioIndex < audios.length - 1) {
+                saveMosScore(); 
+                currentAudioIndex++;
+                loadAudio(currentAudioIndex);
+            }
+            else {
+                saveMosScore(); 
+                nextBtn.disabled = true;
+                submitBtn.disabled = false;
+            }
+            updateNavigationButtons(currentAudioIndex)
+        }
+
+        function previousAudio() {
+            if (currentAudioIndex > 0) {
+                currentAudioIndex--;
+                loadAudio(currentAudioIndex);
+            }
+            updateNavigationButtons(currentAudioIndex)
+        }
+
+        function updateNavigationButtons(index) {
+            // Enable/disable previous button based on current index
+            previousBtn.disabled = index === 0;
+
+            // Disable next button if MOS score is not selected for current audio
+            if (index < audios.length - 1) {
+                const mosScore = mosScores[index];
+                nextBtn.disabled = mosScore === undefined;
+            }
+        }
+
+        function saveMosScore() {
+            const mosOptions = document.getElementsByClassName('form-check-input');
+            let selectedValue = null;
+            for (var i = 0; i < mosOptions.length; i++) {
+                if (mosOptions[i].checked) {
+                    selectedValue = mosOptions[i].value
+                }
+            }
+            if (selectedValue !== null) {
+                mosScores[currentAudioIndex] = `${audios[currentAudioIndex].experimentID} ${audios[currentAudioIndex].audioID} ${selectedValue}`; // Save selected MOS score to dictionary
+                if (currentAudioIndex != 0 || results.value !== '') {
+                    results.value += "$"
+                }
+                results.value += mosScores[currentAudioIndex]
+            } else {
+                delete mosScores[currentAudioIndex]; // Delete MOS score if no selection
+            }
+        }
+
+        
+        fetchAudioData();
+        
+        const radios = document.getElementsByClassName('form-check-input');
+        for (var i = 0; i < radios.length; i++) {
+            radios[i].addEventListener('change', function() {
+                nextBtn.disabled = false;
+            });
+        }
     </script>
 </body>
 
